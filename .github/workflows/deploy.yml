@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - main  
-    # paths:
-    #   - .github/workflows/deploy.yml
-    #   - terraform/terraform_create.tf
+    paths:
+      - .github/workflows/deploy.yml
+      - terraform/terraform_create.tf
       
 
       
