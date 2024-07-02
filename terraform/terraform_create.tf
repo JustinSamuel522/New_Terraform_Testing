@@ -21,7 +21,7 @@ resource "aws_instance" "example" {
       "mkdir project",
       "cd project",
       "sudo yum install git -y",
-      "git clone https://github.com/JustinSamuel522/terraform_testing.git",
+      "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git",
       "cd test",
       "sudo yum install -y python3", # Installing Python 3
       "cd ~/project/test",
