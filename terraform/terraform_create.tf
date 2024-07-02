@@ -8,7 +8,7 @@ resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
   instance_type          = "t2.micro"
   key_name               = "JonO"
-  vpc_security_group_ids = ["sg-0f47fb468827323df"]
+  vpc_security_group_ids = ["sg-0b359e8b40a52e9e2"]
   tags = {
     Name = "terraform project"
 
