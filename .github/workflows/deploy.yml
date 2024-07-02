@@ -19,6 +19,15 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
 
+      - name: Print current directory
+        run: pwd
+
+      - name: List root directory
+        run: ls -al
+
+      - name: List terraform directory
+        run: ls -al terraform
+        
       - name: Terraform Init
         working-directory: terraform
         run: |
@@ -28,3 +37,5 @@ jobs:
         working-directory: terraform
         run: |
           terraform apply -auto-approve -var="private_key_base64=${{ env.PRIVATE_KEY_BASE64}}" -var="aws_access_key_id=${{ env.AWS_ACCESS_KEY_ID }}" -var="aws_secret_access_key=${{ env.AWS_SECRET_ACCESS_KEY }}"
+      
+      
