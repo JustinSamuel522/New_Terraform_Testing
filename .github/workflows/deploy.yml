@@ -22,9 +22,9 @@ jobs:
       - name: Terraform Init
         working-directory: terraform
         run: |
-          terraform init -var="private_key_base64=${{ env.PRIVATE_KEY }}" -var="aws_access_key_id=${{ env.AWS_ACCESS_KEY_ID }}" -var="aws_secret_access_key=${{ env.AWS_SECRET_ACCESS_KEY }}"
+          terraform init -var="private_key_base64=${{ env.PRIVATE_KEY_BASE64 }}" -var="aws_access_key_id=${{ env.AWS_ACCESS_KEY_ID }}" -var="aws_secret_access_key=${{ env.AWS_SECRET_ACCESS_KEY }}"
 
       - name: Terraform Apply
         working-directory: terraform
         run: |
-          terraform apply -auto-approve -var="private_key_base64=${{ env.PRIVATE_KEY }}" -var="aws_access_key_id=${{ env.AWS_ACCESS_KEY_ID }}" -var="aws_secret_access_key=${{ env.AWS_SECRET_ACCESS_KEY }}"
+          terraform apply -auto-approve -var="private_key_base64=${{ env.PRIVATE_KEY_BASE64}}" -var="aws_access_key_id=${{ env.AWS_ACCESS_KEY_ID }}" -var="aws_secret_access_key=${{ env.AWS_SECRET_ACCESS_KEY }}"
