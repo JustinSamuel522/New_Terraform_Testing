@@ -7,7 +7,7 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
   instance_type          = "t2.micro"
-  key_name               = "my-key-pair.pem"
+  key_name               = "my-key-pair"
   vpc_security_group_ids = ["sg-0b359e8b40a52e9e2"]
   tags = {
     Name = "terraform project"
