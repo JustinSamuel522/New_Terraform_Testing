@@ -8,9 +8,9 @@ resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
   instance_type          = "t2.micro"
   key_name               = "JonO"
-  vpc_security_group_ids = ["sg-0f05aac2afa64b9e8 "]
+  vpc_security_group_ids = ["sg-0f05aac2afa64b9e8"]
   tags = {
-    Name = "react project"
+    Name = "terraform project"
 
 
   }
