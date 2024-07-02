@@ -19,14 +19,8 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
 
-      - name: Print current directory
-        run: pwd
-
-      - name: List root directory
-        run: ls -al
-
-      - name: List terraform directory
-        run: ls -al terraform
+      - name: Checkout code
+        uses: actions/checkout@v3
         
       - name: Terraform Init
         working-directory: terraform
