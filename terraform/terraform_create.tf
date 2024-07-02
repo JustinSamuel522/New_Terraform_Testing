@@ -11,8 +11,6 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = ["sg-0b359e8b40a52e9e2"]
   tags = {
     Name = "terraform project"
-
-
   }
   
   provisioner "remote-exec" {
