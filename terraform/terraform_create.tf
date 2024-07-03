@@ -12,8 +12,7 @@ resource "aws_instance" "example" {
   tags = {
     Name = "terraform project"
   }
-  
-  
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
