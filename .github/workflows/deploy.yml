@@ -7,7 +7,6 @@ on:
     # paths:
     #   - .github/workflows/deploy.yml
     #   - terraform/terraform_create.tf
-       
 
 jobs:
   deploy:
