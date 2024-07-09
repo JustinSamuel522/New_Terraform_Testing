@@ -16,21 +16,19 @@ resource "aws_instance" "example" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo yum update -y",
-      "mkdir project",
-      "cd project",
-      "sudo yum install git -y",
-      "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git",
-      "cd New_Terraform_Testing",
-      "sudo yum install -y python3", # Installing Python 3
-      "cd ~/project/",
-      "nohup python3 -m http.server 8000 &" # Starting a simple HTTP server in the background
-      # Access your helloWorld.html at http://<server-ip>:8000/helloWorld.html
-
-      # Note: Ensure you have helloWorld.html in the repository.
-      # Additional commands to start your application
-
-    ]
+    "sudo yum update -y",
+    "mkdir project",
+    "cd project",
+    "sudo yum install git -y",
+    "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git",
+    "cd New_Terraform_Testing",
+    "sudo yum install -y nginx", # Installing nginx
+    "sudo yum install -y certbot python3-certbot-nginx", # Installing certbot for nginx
+    "sudo cp /home/ec2-user/project/New_Terraform_Testing/helloWorld.html /usr/share/nginx/html/",
+    "sudo systemctl start nginx", # Starting nginx
+    "sudo systemctl enable nginx",
+    "sudo certbot --nginx -d your_domain_name" # Replace your_domain_name with your actual domain name
+  ]
     
     connection {
       type        = "ssh"
