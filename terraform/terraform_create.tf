@@ -4,6 +4,26 @@ provider "aws" {
   secret_key = var.aws_secret_access_key
 }
 
+resource "aws_security_group" "allow_http" {
+  name        = "allow_http"
+  description = "Allow HTTP inbound traffic"
+  vpc_id      = "vpc-0befd844e47a175ab"  # Replace with your VPC ID
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  # Allow inbound traffic from any IP address
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]  # Allow outbound traffic to any IP address
+  }
+}
+
 resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
   instance_type          = "t2.micro"
@@ -15,21 +35,13 @@ resource "aws_instance" "example" {
 
 
   provisioner "remote-exec" {
-    inline = [
+     inline = [
       "sudo yum update -y",
-      "mkdir project",
-      "cd project",
-      "sudo yum install git -y",
-      "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git",
-      "cd New_Terraform_Testing",
-      "sudo yum install -y python3", # Installing Python 3
-      "cd ~/project/",
-      "nohup python3 -m https.server 8000 &" # Starting a simple HTTP server in the background
-      # Access your helloWorld.html at http://<server-ip>:8000/helloWorld.html
-
-      # Note: Ensure you have helloWorld.html in the repository.
-      # Additional commands to start your application
-
+      "sudo yum install -y git nginx", # Install git and nginx
+      "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git /home/ec2-user/project", # Clone the repository
+      "sudo cp /home/ec2-user/project/New_Terraform_Testing/helloWorld.html /usr/share/nginx/html/index.html", # Copy helloWorld.html to nginx directory as index.html
+      "sudo systemctl start nginx", # Start nginx
+      "sudo systemctl enable nginx"
     ]
     
     connection {
