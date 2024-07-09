@@ -12,7 +12,7 @@ resource "aws_instance" "example" {
   tags = {
     Name = "terraform project"
   }
-  
+
 
   provisioner "remote-exec" {
     inline = [
@@ -21,9 +21,9 @@ resource "aws_instance" "example" {
       "cd project",
       "sudo yum install git -y",
       "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git",
-      "cd test",
+      "cd New_Terraform_Testing",
       "sudo yum install -y python3", # Installing Python 3
-      "cd ~/project/test",
+      "cd ~/project/",
       "nohup python3 -m http.server 8000 &" # Starting a simple HTTP server in the background
       # Access your helloWorld.html at http://<server-ip>:8000/helloWorld.html
 
