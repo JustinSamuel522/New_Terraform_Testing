@@ -35,13 +35,19 @@ resource "aws_instance" "example" {
 
 
   provisioner "remote-exec" {
-     inline = [
+    inline = [
       "sudo yum update -y",
-      "sudo yum install -y git nginx", # Install git and nginx
-      "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git /home/ec2-user/project", # Clone the repository
-      "sudo cp /home/ec2-user/project/New_Terraform_Testing/helloWorld.html /usr/share/nginx/html/index.html", # Copy helloWorld.html to nginx directory as index.html
+      "mkdir project",
+      "cd project",
+      "sudo yum install git -y",
+      "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git",
+      "cd ~/project/New_Terraform_Testing",
+      "sudo yum install -y nginx",
+      "sudo cp helloWorld.html /usr/share/nginx/html/index.html", # Copy helloWorld.html to nginx directory as index.html
       "sudo systemctl start nginx", # Start nginx
-      "sudo systemctl enable nginx"
+      "sudo systemctl enable nginx",
+      "sudo chmod +x /home/ec2-user/setup.sh", # Make setup script executable
+      "sudo /home/ec2-user/setup.sh" # Run setup script to install Certbot and get SSL certificate
     ]
     
     connection {
