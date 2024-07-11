@@ -4,25 +4,7 @@ provider "aws" {
   secret_key = var.aws_secret_access_key
 }
 
-resource "aws_security_group" "allow_http" {
-  name        = "allow_http"
-  description = "Allow HTTP inbound traffic"
-  vpc_id      = "vpc-0befd844e47a175ab"  # Replace with your VPC ID
 
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow inbound traffic from any IP address
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow outbound traffic to any IP address
-  }
-}
 
 resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
@@ -32,14 +14,14 @@ resource "aws_instance" "example" {
   tags = {
     Name = "terraform project"
   }
-  
+
 
   provisioner "remote-exec" {
      inline = [
       "sudo yum update -y",
       "sudo yum install -y git nginx", # Install git and nginx
       "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git /home/ec2-user/project", # Clone the repository
-      "sudo cp /home/ec2-user/project/New_Terraform_Testing/helloWorld.html /usr/share/nginx/html/index.html", # Copy helloWorld.html to nginx directory as index.html
+      "sudo cp /home/ec2-user/project/New_Terraform_Testing/helloWorld.html /usr/share/nginx/html/index.html", # Copy helloWorld.html to nginx directory
       "sudo systemctl start nginx", # Start nginx
       "sudo systemctl enable nginx"
     ]
