@@ -29,7 +29,7 @@ resource "aws_instance" "example" {
       "sudo chmod 644 ~/project/New_Terraform_Testing/src/index.html",
       "sudo mv ~/project/New_Terraform_Testing/src/index.html /var/www/html/",
       "sudo chmod 644 ~/project/New_Terraform_Testing/src/style.css",
-      "sudo mv ~/project/New_Terraform_Testing/src /var/www/html/",
+      "sudo mv ~/project/New_Terraform_Testing/src/styles.css /var/www/html/",
       
     ]
     
