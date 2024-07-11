@@ -18,18 +18,18 @@ resource "aws_instance" "example" {
 
   provisioner "remote-exec" {
      inline = [
-      "sudo yum update -y",
-      "sudo yum install httpd -y",
-      "sudo systemctl start httpd",
-      "sudo systemctl enable httpd",
-      "mkdir project",
-      "cd project",
-      "sudo yum install git -y",
-      "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git /home/ec2-user/project", # Clone the repository
-      "sudo chmod 644 ~/project/New_Terraform_Testing/src/index.html",
-      "sudo mv ~/project/New_Terraform_Testing/src/index.html /var/www/html/",
-      "sudo chmod 644 ~/project/New_Terraform_Testing/src/style.css",
-      "sudo mv ~/project/New_Terraform_Testing/src/styles.css /var/www/html/",
+        "sudo yum update -y",
+        "sudo yum install httpd -y",
+        "sudo systemctl start httpd",
+        "sudo systemctl enable httpd",
+        "mkdir project",
+        "cd project",
+        "sudo yum install git -y",
+        "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git /home/ec2-user/project", # Clone the repository
+        "sudo chmod 644 ~/project/src/index.html",
+        "sudo mv ~/project/src/index.html /var/www/html/",
+        "sudo chmod 644 ~/project/src/style.css",
+        "sudo mv ~/project/src/styles.css /var/www/html/",
       
     ]
     
