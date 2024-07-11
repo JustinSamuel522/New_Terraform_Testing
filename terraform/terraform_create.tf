@@ -30,6 +30,15 @@ resource "aws_instance" "example" {
         "sudo mv ~/project/src/index.html /var/www/html/",
         "sudo chmod 644 ~/project/src/style.css",
         "sudo mv ~/project/src/styles.css /var/www/html/",
+        "sudo chmod 644 ~/project/src/images",
+        "sudo mv ~/project/src/images /var/www/html/",
+        "sudo chmod 644 ~/project/src/app.js",
+        "sudo mv ~/project/src/app.js /var/www/html/",
+        "sudo chmod 644 ~/project/src/sign-up.html",
+        "sudo mv ~/project/src/sign-up.html /var/www/html/",
+        "sudo chmod 644 ~/project/src/customers.html",
+        "sudo mv ~/project/src/customers.html /var/www/html/",
+
       
     ]
     
