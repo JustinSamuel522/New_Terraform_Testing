@@ -28,7 +28,7 @@ resource "aws_instance" "example" {
         "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git /home/ec2-user/project", # Clone the repository
         "sudo chmod 644 ~/project/src/index.html",
         "sudo mv ~/project/src/index.html /var/www/html/",
-        "sudo chmod 644 ~/project/src/style.css",
+        "sudo chmod 644 ~/project/src/styles.css",
         "sudo mv ~/project/src/styles.css /var/www/html/",
         "sudo chmod 644 ~/project/src/images",
         "sudo mv ~/project/src/images /var/www/html/",
@@ -36,8 +36,8 @@ resource "aws_instance" "example" {
         "sudo mv ~/project/src/app.js /var/www/html/",
         "sudo chmod 644 ~/project/src/sign-up.html",
         "sudo mv ~/project/src/sign-up.html /var/www/html/",
-        "sudo chmod 644 ~/project/src/customers.html",
-        "sudo mv ~/project/src/customers.html /var/www/html/",
+        "sudo chmod 644 ~/project/src/customer.html",
+        "sudo mv ~/project/src/customer.html /var/www/html/",
 
       
     ]
