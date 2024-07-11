@@ -19,11 +19,18 @@ resource "aws_instance" "example" {
   provisioner "remote-exec" {
      inline = [
       "sudo yum update -y",
-      "sudo yum install -y git nginx", # Install git and nginx
+      "sudo yum install httpd -y",
+      "sudo systemctl start httpd",
+      "sudo systemctl enable httpd",
+      "mkdir project",
+      "cd project",
+      "sudo yum install git -y",
       "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git /home/ec2-user/project", # Clone the repository
-      "sudo cp /home/ec2-user/project/New_Terraform_Testing/helloWorld.html /usr/share/nginx/html/index.html", # Copy helloWorld.html to nginx directory
-      "sudo systemctl start nginx", # Start nginx
-      "sudo systemctl enable nginx"
+      "sudo chmod 644 ~/project/New_Terraform_Testing/src/index.html",
+      "sudo mv ~/project/New_Terraform_Testing/src/index.html /var/www/html/",
+      "sudo chmod 644 ~/project/New_Terraform_Testing/src/style.css",
+      "sudo mv ~/project/New_Terraform_Testing/src /var/www/html/",
+      
     ]
     
     connection {
