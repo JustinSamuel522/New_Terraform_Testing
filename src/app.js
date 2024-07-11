@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (viewCustomersButton) {
         viewCustomersButton.addEventListener('click', function() {
-            window.location.href = '/customers.html';
+            window.location.href = '/customer.html';
         });
     }
 
