@@ -30,8 +30,8 @@ resource "aws_instance" "example" {
         "sudo mv ~/project/src/index.html /var/www/html/", # moving files to destination directory for frontend
         "sudo chmod 644 ~/project/src/styles.css",
         "sudo mv ~/project/src/styles.css /var/www/html/",
-        "sudo chmod 644 ~/project/src/images/",
-        "sudo mv ~/project/src/images/ /var/www/html/",
+        "sudo chmod 644 ~/project/src/images/*.jpg",
+        "sudo mv ~/project/src/images/*.jpg /var/www/html/",
         "sudo chmod 644 ~/project/src/app.js",
         "sudo mv ~/project/src/app.js /var/www/html/",
         "sudo chmod 644 ~/project/src/sign-up.html",
