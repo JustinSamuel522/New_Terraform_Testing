@@ -26,8 +26,8 @@ resource "aws_instance" "example" {
         "cd project",
         "sudo yum install git -y",
         "git clone https://github.com/JustinSamuel522/New_Terraform_Testing.git /home/ec2-user/project", # Clone the repository
-        "sudo chmod 644 ~/project/src/index.html",
-        "sudo mv ~/project/src/index.html /var/www/html/",
+        "sudo chmod 644 ~/project/src/index.html", #Creating permissions for file in source code
+        "sudo mv ~/project/src/index.html /var/www/html/", # moving files to destination directory for frontend
         "sudo chmod 644 ~/project/src/styles.css",
         "sudo mv ~/project/src/styles.css /var/www/html/",
         "sudo chmod 644 ~/project/src/images",
