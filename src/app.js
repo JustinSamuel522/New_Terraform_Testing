@@ -19,13 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('email').value;
             const number = document.getElementById('number').value;
             const bookingTime = document.getElementById('booking-time').value;
+
+            const code = generateRandomCode(); //generate code
             
             const customer = { name, email, number, bookingTime };
             let customers = JSON.parse(localStorage.getItem('customers')) || [];
             customers.push(customer);
             localStorage.setItem('customers', JSON.stringify(customers));
             
-            alert('Customer information saved!');
+            alert(`Your appointment has been set! Here is your code just for you: #${code}`);
             form.reset();
         });
     }
@@ -47,12 +49,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Email: ${customer.email}</p>
                 <p>Number: ${customer.number}</p>
                 <p>Booking Time: ${customer.bookingTime}</p>
+                <p>Code: #${customer.code}</p> <!-- Display the generated code -->
             `;
             customerList.appendChild(customerDiv);
         });
     }
 });
 
+function generateRandomCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < 7; i++) {
+        code += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return code;
+}
 
 // interactive photo carousel
 
