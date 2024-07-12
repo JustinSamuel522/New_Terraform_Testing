@@ -14,7 +14,7 @@ resource "aws_instance" "example" {
   tags = {
     Name = "terraform project"
   }
-  
+
 
   provisioner "remote-exec" {
      inline = [
@@ -38,6 +38,9 @@ resource "aws_instance" "example" {
         "sudo mv ~/project/src/sign-up.html /var/www/html/",
         "sudo chmod 644 ~/project/src/customer.html",
         "sudo mv ~/project/src/customer.html /var/www/html/",
+        "sudo chmod 644 ~/project/src/photo-gallery.html",
+        "sudo mv ~/project/src/photo-gallery.html /var/www/html/",
+
 
       
     ]

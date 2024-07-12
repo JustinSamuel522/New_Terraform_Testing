@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <!-- Navigation Bar Section-->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo"><i class="fas fa-seedling"></i> Melinda On Film</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/" class="navbar__links"> 
+                        About Me 
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/photo-gallery.html" class="navbar__links">
+                        Photo Gallery
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/" class="navbar__links">
+                        Other
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/sign-up.html" class="button">
+                        Sign Up
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Photo Gallery Section -->
+    <section class="photo-gallery">
+        <div class="gallery__wrapper">
+            <h1>Enter Personal Code:</h1>
+            <form id="personal-code-form">
+                <input type="text" id="personal-code" placeholder="Enter your code">
+                <button type="submit" class="button">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
