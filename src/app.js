@@ -15,19 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
+            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const number = document.getElementById('number').value;
             const bookingTime = document.getElementById('booking-time').value;
-
-            const code = generateRandomCode(); //generate code
             
-            const customer = { name, email, number, bookingTime };
+            // Generate a random 7-character code starting with #
+            const code = '#' + generateRandomCode(7);
+            
+            const customer = { name, email, number, bookingTime, code };
             let customers = JSON.parse(localStorage.getItem('customers')) || [];
             customers.push(customer);
             localStorage.setItem('customers', JSON.stringify(customers));
             
-            alert(`Your appointment has been set! Here is your code just for you: #${code}`);
+            // Show customized confirmation message with the generated code
+            alert(`Your appointment has been set! Here is your code just for you: ${code}`);
             form.reset();
         });
     }
@@ -38,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Display customers list with their details including the generated code
     const customerList = document.getElementById('customer-list');
     if (customerList) {
         const customers = JSON.parse(localStorage.getItem('customers')) || [];
@@ -49,17 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Email: ${customer.email}</p>
                 <p>Number: ${customer.number}</p>
                 <p>Booking Time: ${customer.bookingTime}</p>
-                <p>Code: #${customer.code}</p> <!-- Display the generated code -->
+                <p>Code: ${customer.code}</p>
             `;
             customerList.appendChild(customerDiv);
         });
     }
 });
 
-function generateRandomCode() {
+// Function to generate a random alphanumeric code of given length
+function generateRandomCode(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let code = '';
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < length; i++) {
         code += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return code;
@@ -95,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
         galleryWrapper.scrollLeft = scrollLeft - walk;
     });
 });
+
+// gallery submit form here
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('gallery-submit-form');
