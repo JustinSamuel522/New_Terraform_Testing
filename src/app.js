@@ -6,6 +6,8 @@ menu.addEventListener('click', function() {
     menuLinks.classList.toggle('active');
 });
 
+//sign up customer list and viewing customers
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('sign-up-form');
     const viewCustomersButton = document.getElementById('view-customers');
@@ -49,4 +51,36 @@ document.addEventListener('DOMContentLoaded', () => {
             customerList.appendChild(customerDiv);
         });
     }
+});
+
+
+// interactive photo carousel
+
+document.addEventListener('DOMContentLoaded', () => {
+    const galleryWrapper = document.querySelector('.gallery__wrapper');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    galleryWrapper.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - galleryWrapper.offsetLeft;
+        scrollLeft = galleryWrapper.scrollLeft;
+    });
+
+    galleryWrapper.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    galleryWrapper.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+
+    galleryWrapper.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - galleryWrapper.offsetLeft;
+        const walk = (x - startX) * 3; // Adjust speed factor
+        galleryWrapper.scrollLeft = scrollLeft - walk;
+    });
 });
