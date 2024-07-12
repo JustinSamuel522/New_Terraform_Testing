@@ -95,3 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
         galleryWrapper.scrollLeft = scrollLeft - walk;
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('gallery-submit-form');
+
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const codeInput = document.getElementById('code');
+            const codeValue = codeInput.value.trim(); // Trim whitespace
+            
+            // Check if code starts with #
+            if (!codeValue.startsWith('#')) {
+                alert("Error: Improper Code!");
+                return;
+            }
+            
+            // Simulate a message about photos being processed
+            alert("Your photos are still in the making, you'll get an email soon when they're ready!");
+            form.reset();
+        });
+    }
+});
